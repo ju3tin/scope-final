@@ -29,6 +29,11 @@ export interface IContract {
   signerName?: string
   signatureDataUrl?: string
   signedAt?: Date
+  followUp?: {
+    note: string
+    dueDate?: Date
+    completed: boolean
+  }
   createdAt: Date
   updatedAt: Date
 }
@@ -69,6 +74,11 @@ const ContractSchema = new Schema<IContract>(
     signerName: { type: String },
     signatureDataUrl: { type: String },
     signedAt: { type: Date },
+    followUp: {
+      note: { type: String, trim: true },
+      dueDate: { type: Date },
+      completed: { type: Boolean, default: false },
+    },
   },
   {
     timestamps: true,
